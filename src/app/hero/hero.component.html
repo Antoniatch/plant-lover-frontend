@@ -1,5 +1,13 @@
-<div>
-    <h2>{{title}}</h2>
-
-    <button (click)="onClick()" > Add shit </button>
+<div class="hero-content">
+  <div class="upper-container">
+    <h1>{{ text }}</h1>
+    <ul>
+      @for (bullet of bullets; track bullet.id) {
+        <li class="bullet">{{ bullet.text }}</li>
+      }
+    </ul>
+  </div>
+  <a class="inscription-button" routerLink="inscription">Je rejoins la communauté</a>
 </div>
+
+<div class="hero-background"></div>

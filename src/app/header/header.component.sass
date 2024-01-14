@@ -1,14 +1,12 @@
 @use '../../style' as *
 
-$padding: 10px 
-
 header
-    width: calc( 100% - (2*$padding) )
-    padding: $padding
+    position: sticky
+    top: 0
+    margin: auto
+    height: $headerHeight
+    width: $desktopWidth
+    background: white
     display: flex
     justify-content: space-between
     align-items: center
-    position: absolute
-    transform: translate(-50%)
-    left: 50%
-    background-color: $background
