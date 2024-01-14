@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { HomeContent, IHeroContent } from '../../data/homeContent';
 
 @Component({
   selector: 'app-hero',
@@ -9,19 +10,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hero.component.sass'
 })
 export class HeroComponent {
-    text: string = "Rejoignez le plus grand jardin partagé des Internets"
-    bullets = [
-      {
-        id: 0,
-        text: "Astuces"
-      },
-      {
-        id: 1,
-        text: "Conseils"
-      },
-      {
-        id: 2,
-        text: "Partage"
-      },
-    ]
+  @Input() content: IHeroContent = {
+    id: null,
+    title: ''
+  }
 }

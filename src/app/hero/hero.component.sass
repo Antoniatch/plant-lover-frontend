@@ -12,6 +12,10 @@
     h1
         margin-bottom: 0
 
+    p
+        font-size: $h4
+        line-height: $h1
+
     li
         font-size: $h4
         list-style: none
@@ -25,13 +29,16 @@
     padding: 10px 20px
     min-width: 30%
     max-width: 50%
+    transition: 300ms ease-in all
 
+.inscription-button:hover
+    transform: scale(1.03)
 
 .hero-background
     background: $stripedBg
     width: 50vw
     height: 70vh
-    position: absolute
+    position: fixed
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)

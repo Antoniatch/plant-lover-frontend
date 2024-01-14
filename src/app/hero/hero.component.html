@@ -1,11 +1,18 @@
 <div class="hero-content">
   <div class="upper-container">
-    <h1>{{ text }}</h1>
-    <ul>
-      @for (bullet of bullets; track bullet.id) {
-        <li class="bullet">{{ bullet.text }}</li>
-      }
-    </ul>
+    <h1>{{ content.title }}</h1>
+
+    @if (content.subtitle) {
+      <p>{{ content.subtitle }}</p>
+    }
+
+    @if (content.bullets) {
+      <ul>
+        @for (bullet of content.bullets; track bullet.id) {
+          <li class="bullet">{{ bullet.text }}</li>
+        }
+      </ul>
+    }
   </div>
   <a class="inscription-button" routerLink="inscription">Je rejoins la communauté</a>
 </div>
