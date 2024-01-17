@@ -23,11 +23,7 @@
         margin: 15px 0
     
 .inscription-button
-    text-decoration: none
-    background: $secondary
-    color: white
-    font-size: $h4
-    padding: 10px 20px
+    @include button($secondary, white, $h4)
     min-width: 30%
     max-width: 50%
     transition: 300ms ease-in all

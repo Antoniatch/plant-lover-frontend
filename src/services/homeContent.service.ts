@@ -1,22 +1,11 @@
 import { Injectable } from "@angular/core"
-
-interface IBullet {
-    id: number,
-    text: string
-}
-
-export interface IHeroContent {
-    id: number | null,
-    title: string,
-    subtitle?: string
-    bullets?: IBullet[]
-}
+import { IHeroContent } from "../interfaces"
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeContent {
-  contents: IHeroContent[] = [
+export class HomeContentService {
+  protected heroContentList: IHeroContent[] = [
     {
         id: 0,
         title: "Rejoignez le plus grand jardin partagé des Internets",
@@ -57,7 +46,7 @@ export class HomeContent {
       },
 ]
 
-  getContent(): IHeroContent[] {
-  return this.contents
+  getAllContent(): IHeroContent[] {
+  return this.heroContentList
 }
     }

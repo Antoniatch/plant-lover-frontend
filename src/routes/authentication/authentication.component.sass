@@ -1,0 +1,31 @@
+@use '../../style' as *
+
+.authentication
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    width: $desktopWidth
+
+.left-container
+    width: 50%
+    height: 70vh
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background: $stripedBg
+
+    h2,a
+        margin: 0
+        margin-left: 50px
+        margin-right: -50px
+        margin-bottom: 20px
+
+    a
+        text-decoration: underline
+        cursor: pointer
+
+.form-container
+    width: 50%
+    display: flex
+    justify-content: center
+    align-items: center
