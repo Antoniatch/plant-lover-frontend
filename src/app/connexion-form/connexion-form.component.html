@@ -1,0 +1,28 @@
+<form class="form" [formGroup]="connexionForm" (submit)="submitLogin()">
+  <input
+    [class.input-invalid]="fieldHasError(email)"
+    type="email"
+    id="email"
+    formControlName="email"
+    placeholder="E-mail"
+    autocomplete="email" />
+  <span [hidden]="!fieldHasError(email)" class="error"> {{ fieldHasError(email) }} </span>
+
+  <input
+    [class.input-invalid]="fieldHasError(password)"
+    type="password"
+    id="password"
+    formControlName="password"
+    placeholder="Mot de passe"
+    autocomplete="current-password" />
+  <span [hidden]="!fieldHasError(password)" class="error"> {{ fieldHasError(password) }} </span>
+
+  <button type="submit" [disabled]="connexionForm.invalid">Je me connecte</button>
+
+  <span [ngClass]="{ login: true, error: true }" *ngIf="loginMessage?.type === 'error'">
+    {{ loginMessage?.message }}
+  </span>
+  <span [ngClass]="{ login: true, success: true }" *ngIf="loginMessage?.type === 'success'">
+    {{ loginMessage?.message }}
+  </span>
+</form>

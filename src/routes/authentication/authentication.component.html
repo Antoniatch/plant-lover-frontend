@@ -1,0 +1,15 @@
+<section class="authentication">
+  <div class="left-container">
+    @if (page === 'subscription') {
+      <h2>J'ai déjà un compte !</h2>
+      <a routerLink="/connexion">Me connecter</a>
+    }
+    @if (page === 'connexion') {
+      <h2>Je n'ai pas encore de compte !</h2>
+      <a routerLink="/inscription">Créer un compte</a>
+    }
+  </div>
+  <div class="form-container">
+    <ng-content />
+  </div>
+</section>

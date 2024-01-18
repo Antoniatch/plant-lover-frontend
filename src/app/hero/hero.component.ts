@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HomeContent, IHeroContent } from '../../data/homeContent';
+import { IHeroContent } from '../../interfaces';
 
 @Component({
   selector: 'app-hero',
@@ -10,8 +10,5 @@ import { HomeContent, IHeroContent } from '../../data/homeContent';
   styleUrl: './hero.component.sass'
 })
 export class HeroComponent {
-  @Input() content: IHeroContent = {
-    id: null,
-    title: ''
-  }
+  @Input() heroContent!: IHeroContent
 }

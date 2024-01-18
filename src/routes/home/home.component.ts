@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { HeroComponent } from "../../app/hero/hero.component";
-import { HomeContent, IHeroContent } from "../../data/homeContent";
+import { HomeContentService } from "../../services/homeContent.service";
+import { IHeroContent } from "../../interfaces";
 
 @Component({
     selector: "app-home",
@@ -10,9 +11,9 @@ import { HomeContent, IHeroContent } from "../../data/homeContent";
     imports: [HeroComponent]
 })
 export class HomeComponent {
-    contents: IHeroContent[] = []
+    heroContentList: IHeroContent[] = []
 
-    constructor (private homeContent: HomeContent) {
-        this.contents = this.homeContent.getContent()
+    constructor (private homeContentService: HomeContentService) {
+        this.heroContentList = this.homeContentService.getAllContent()
     }
 }

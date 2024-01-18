@@ -1,0 +1,37 @@
+@use '../../style' as *
+
+.form
+    display: flex
+    flex-direction: column
+    font-size: $p
+
+    input
+        @include input($background, $p)
+
+    button
+        @include button($secondary, white, $p)
+        margin: 50px 0 20px 0
+        cursor: pointer
+
+    button:disabled
+        cursor: not-allowed
+        opacity: .5
+
+    .input-invalid
+        border-bottom: 1px solid $alert-red
+
+span
+    font-size: .8rem
+
+.hidden
+    display: none
+
+.login
+    text-align: center
+    width: 300px
+
+.error
+    color: $alert-red
+
+.success
+    color: $alert-green

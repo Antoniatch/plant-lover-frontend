@@ -1,14 +1,14 @@
 <div class="hero-content">
   <div class="upper-container">
-    <h1>{{ content.title }}</h1>
+    <h1>{{ heroContent.title }}</h1>
 
-    @if (content.subtitle) {
-      <p>{{ content.subtitle }}</p>
+    @if (heroContent.subtitle) {
+      <p>{{ heroContent.subtitle }}</p>
     }
 
-    @if (content.bullets) {
+    @if (heroContent.bullets) {
       <ul>
-        @for (bullet of content.bullets; track bullet.id) {
+        @for (bullet of heroContent.bullets; track bullet.id) {
           <li class="bullet">{{ bullet.text }}</li>
         }
       </ul>

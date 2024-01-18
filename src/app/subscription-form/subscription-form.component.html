@@ -1,0 +1,44 @@
+<form class="form" [formGroup]="subscriptionForm" (submit)="submitSubscription()">
+  <input
+    [class.input-invalid]="fieldHasError(email)"
+    type="text"
+    id="email"
+    formControlName="email"
+    placeholder="E-mail"
+    autocomplete="email" />
+
+  <span [class.hidden]="!fieldHasError(email)">{{ fieldHasError(email) }}</span>
+
+  <input
+    [class.input-invalid]="fieldHasError(name)"
+    type="text"
+    id="name"
+    formControlName="name"
+    placeholder="Pseudo"
+    autocomplete="username" />
+
+  <span [class.hidden]="!fieldHasError(name)">{{ fieldHasError(name) }}</span>
+
+  <input
+    [class.input-invalid]="fieldHasError(password)"
+    type="password"
+    id="password"
+    formControlName="password"
+    placeholder="Mot de passe"
+    autocomplete="new-password" />
+
+  <span [class.hidden]="!fieldHasError(password)">{{ fieldHasError(password) }}</span>
+
+  <input
+    [class.input-invalid]="fieldHasError(passwordRepeat)"
+    type="password"
+    id="passwordRepeat"
+    formControlName="passwordRepeat"
+    placeholder="Confirmation mot de passe"
+    autocomplete="new-password" />
+
+  <span [class.hidden]="!fieldHasError(passwordRepeat)">{{ fieldHasError(passwordRepeat) }}</span>
+  <span [class.hidden]="passwordsMatch()"> Les mots de passe ne correspondent pas</span>
+
+  <button type="submit" [disabled]="!subscriptionForm.valid">Je m'inscris</button>
+</form>

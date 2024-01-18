@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { PlantComponent } from './plants/plants.component';
 import { HomeComponent } from './home/home.component';
 import { CommunityComponent } from './community/community.component';
-import { InscriptionComponent } from './inscription/inscription.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HelpComponent } from './help/help.component';
 
@@ -35,6 +35,6 @@ export const routes: Routes = [
     {
         path: "inscription",
         title: "Beleaf - Inscription",
-        component: InscriptionComponent
+        component: SubscriptionComponent
     }
 ];

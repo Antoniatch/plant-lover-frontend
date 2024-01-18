@@ -1,5 +1,5 @@
-<main class="main">
-  @for (content of contents; track content.id) {
-    <app-hero [content]="content" />
+<main class="home">
+  @for (heroContent of heroContentList; track heroContent.id) {
+    <app-hero [heroContent]="heroContent" />
   }
 </main>
