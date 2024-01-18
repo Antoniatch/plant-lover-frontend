@@ -1,10 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { CommonModule } from '@angular/common';
-import { interval, tap } from 'rxjs';
-import { Observable } from 'rxjs';
-import { get } from 'http';
+
 import { ILoginMessage } from '../../interfaces';
 
 @Component({
