@@ -78,8 +78,7 @@ export class FormService {
       mutation: LOGIN,
       variables: {
         data: {
-          // email,
-          name: email,
+          email,
           password,
         },
       },
