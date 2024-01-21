@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +10,6 @@ import { HeaderComponent } from './header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })
-export class AppComponent implements OnInit{
-
-  ngOnInit(): void {
-    
-  }
+export class AppComponent implements OnInit {
+  ngOnInit(): void {}
 }

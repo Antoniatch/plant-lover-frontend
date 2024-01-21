@@ -1,11 +1,16 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { routes } from '../routes/app.routes';
+import { routes } from './routes/app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { graphqlProvider } from './graphql.provider';
+import { graphqlProvider } from './providers/graphql.provider';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(), provideHttpClient(withFetch()), graphqlProvider]
+  providers: [
+    provideRouter(routes),
+    provideClientHydration(),
+    provideHttpClient(withFetch()),
+    graphqlProvider,
+  ],
 };
