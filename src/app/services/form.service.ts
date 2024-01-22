@@ -1,32 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { Apollo, MutationResult, gql } from 'apollo-angular';
-import { ILoginOutput, ISubscriptionOutput } from '../interfaces';
+import { ILoginOutput, ISubscriptionOutput, LoginResponse } from '../types/interfaces';
 import { Observable, map, tap } from 'rxjs';
-
-const CREATE_NEW_USER = gql`
-  mutation CreateOneUser($data: LoginInput!) {
-    createOneUser(data: $data) {
-      id
-      name
-      email
-    }
-  }
-`;
-
-type LoginResponse = {
-  login: ILoginOutput;
-};
-
-const LOGIN = gql`
-  mutation Login($data: LoginInput!) {
-    login(data: $data) {
-      accessToken
-      id
-      name
-    }
-  }
-`;
+import { CREATE_NEW_USER, LOGIN } from '../graphql/mutations';
 
 @Injectable({
   providedIn: 'root',

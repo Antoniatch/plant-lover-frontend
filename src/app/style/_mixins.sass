@@ -33,3 +33,13 @@
 
 @mixin error-message
     font-size: fonts.$h5
+
+@mixin fixed-bg($width: 50vw, $height: 50vh)
+    background: colors.$stripedBg
+    width: $width
+    height: $height
+    position: fixed
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    z-index: -100
