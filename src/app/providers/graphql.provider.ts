@@ -5,6 +5,7 @@ import { DOCUMENT } from '@angular/common';
 import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
+import { Router } from '@angular/router';
 
 const uri = 'http://localhost:4000';
 
@@ -26,6 +27,7 @@ export function apolloOptionsFactory(): ApolloClientOptions<any> {
     }
   });
 
+  const router = inject(Router);
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
@@ -33,10 +35,19 @@ export function apolloOptionsFactory(): ApolloClientOptions<any> {
           `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
         );
       });
+
+      const firstError = graphQLErrors[0];
+      if (firstError.message === 'Utilisateur non authentifié')
+        router.navigate([
+          '/connexion',
+          { message: 'Veuillez vous authentifier pour accéder à cette page' },
+        ]);
+      else router.navigate(['/error', { message: firstError.message }]);
     }
 
     if (networkError) {
-      console.error(`[Network error]: ${networkError.name}`);
+      console.log(networkError);
+      router.navigate(['/error', { message: networkError.message }]);
     }
   });
 

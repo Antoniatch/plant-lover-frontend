@@ -1,12 +1,18 @@
 <section class="authentication">
   <div class="left-container">
-    @if (page === 'subscription') {
+    @if (message) {
+      <h2 class="error-title">Erreur</h2>
+      <p class="error-message">{{ message }}</p>
+      <p>
+        Pas encore de compte ?
+        <a class="error-link" routerLink="/inscription">Créer un compte</a>
+      </p>
+    } @else if (page === 'subscription') {
       <h2>J'ai déjà un compte !</h2>
-      <a routerLink="/connexion">Me connecter</a>
-    }
-    @if (page === 'connexion') {
+      <a class="link" routerLink="/connexion">Me connecter</a>
+    } @else if (page === 'connexion') {
       <h2>Je n'ai pas encore de compte !</h2>
-      <a routerLink="/inscription">Créer un compte</a>
+      <a class="link" routerLink="/inscription">Créer un compte</a>
     }
   </div>
   <div class="form-container">

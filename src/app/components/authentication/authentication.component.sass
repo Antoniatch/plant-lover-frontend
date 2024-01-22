@@ -14,7 +14,7 @@
     justify-content: center
     background: $stripedBg
 
-    h2,a
+    h2, h3, p, .link
         margin: 0
         margin-left: 50px
         margin-right: -50px
@@ -23,6 +23,14 @@
     a
         text-decoration: underline
         cursor: pointer
+
+.error-title
+    @include error-title
+
+.error-message
+    @include error-message
+    margin-right: 50px !important
+    margin-bottom: 50px !important
 
 .form-container
     width: 50%

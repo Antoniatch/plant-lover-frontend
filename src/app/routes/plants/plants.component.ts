@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApolloQueryResult } from '@apollo/client';
 import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
@@ -26,6 +27,11 @@ export class PlantComponent implements OnInit, OnDestroy {
 
   apollo = inject(Apollo);
 
+  router = inject(Router);
+  errorRedirection(message: string) {
+    this.router.navigate(['/error', { message }]);
+  }
+
   ngOnInit(): void {
     this.querySubscription = this.apollo
       .watchQuery({
@@ -35,9 +41,7 @@ export class PlantComponent implements OnInit, OnDestroy {
           authorId: '2595574b-0670-4528-b360-773663e28855',
         },
       })
-      .valueChanges.subscribe(({ data, error }: ApolloQueryResult<any>) => {
-        if (error) console.log(error);
-
+      .valueChanges.subscribe(({ data }: ApolloQueryResult<any>) => {
         if (data) this.likes = data.getAllAuthorLikes;
       });
   }
