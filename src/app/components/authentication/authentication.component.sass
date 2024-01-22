@@ -24,8 +24,11 @@
         text-decoration: underline
         cursor: pointer
 
+.error-title
+    @include error-title
+
 .error-message
-    font-size: $h4
+    @include error-message
     margin-right: 50px !important
     margin-bottom: 50px !important
 

@@ -42,11 +42,11 @@ export function apolloOptionsFactory(): ApolloClientOptions<any> {
           '/connexion',
           { message: 'Veuillez vous authentifier pour accéder à cette page' },
         ]);
-      else router.navigate(['/error', { message: graphQLErrors[0].message }]);
+      else router.navigate(['/error', { message: firstError.message }]);
     }
 
     if (networkError) {
-      console.error(`[Network error]: ${networkError.name}`);
+      console.log(networkError);
       router.navigate(['/error', { message: networkError.message }]);
     }
   });
