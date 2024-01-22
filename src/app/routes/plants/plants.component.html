@@ -1,7 +1,7 @@
 <div class="plants">
-  Plantes
-
-  @for (like of likes; track like.id) {
-    <p>{{ like.authorId }}</p>
+  @for (plant of plants; track plant.id) {
+    <app-card page="plants" [id]="plant.id" [name]="plant.name" [image]="plant.image" />
   }
 </div>
+
+<div class="background"></div>

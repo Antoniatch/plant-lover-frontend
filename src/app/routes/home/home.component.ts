@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { HomeContentService } from '../../services/homeContent.service';
-import { IHeroContent } from '../../interfaces';
+import { IHeroContent } from '../../types/interfaces';
 
 @Component({
   selector: 'app-home',

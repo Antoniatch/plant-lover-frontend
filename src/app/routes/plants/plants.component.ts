@@ -3,50 +3,35 @@ import { Router } from '@angular/router';
 import { ApolloQueryResult } from '@apollo/client';
 import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
+import { GET_ALL_PLANTS } from '../../graphql/queries';
+import { IPlant } from '../../types/interfaces';
+import { CardComponent } from '../../components/card/card.component';
 
-const GET_ALL_LIKES = gql`
-  query getAllAuthorLikes($userId: String!, $authorId: String!) {
-    getAllAuthorLikes(userId: $userId, authorId: $authorId) {
-      id
-      date
-      authorId
-      userId
-    }
-  }
-`;
 @Component({
   selector: 'routes-plants',
   standalone: true,
   templateUrl: './plants.component.html',
   styleUrl: './plants.component.sass',
+  imports: [CardComponent],
 })
 export class PlantComponent implements OnInit, OnDestroy {
-  likes: any;
-
-  private querySubscription!: Subscription;
+  plants!: IPlant[];
 
   apollo = inject(Apollo);
 
-  router = inject(Router);
-  errorRedirection(message: string) {
-    this.router.navigate(['/error', { message }]);
-  }
+  private getAllPlantsSubscription!: Subscription;
 
   ngOnInit(): void {
-    this.querySubscription = this.apollo
+    this.getAllPlantsSubscription = this.apollo
       .watchQuery({
-        query: GET_ALL_LIKES,
-        variables: {
-          userId: '2595574b-0670-4528-b360-773663e28855',
-          authorId: '2595574b-0670-4528-b360-773663e28855',
-        },
+        query: GET_ALL_PLANTS,
       })
       .valueChanges.subscribe(({ data }: ApolloQueryResult<any>) => {
-        if (data) this.likes = data.getAllAuthorLikes;
+        if (data) this.plants = data.getAllPlants;
       });
   }
 
   ngOnDestroy(): void {
-    this.querySubscription.unsubscribe();
+    this.getAllPlantsSubscription.unsubscribe();
   }
 }

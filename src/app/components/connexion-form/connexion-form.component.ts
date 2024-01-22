@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { FormService } from '../../services/form.service';
 import { CommonModule } from '@angular/common';
 
-import { ILoginMessage } from '../../interfaces';
+import { ILoginMessage } from '../../types/interfaces';
 
 @Component({
   selector: 'app-connexion-form',

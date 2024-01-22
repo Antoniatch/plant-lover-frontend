@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="image-container">
+    <img [src]="image" alt="" />
+  </div>
+
+  <div class="info-container">
+    <div class="info">
+      @if (page === 'plants') {
+        <h5 class="title">{{ name }}</h5>
+        <p><span>Famille</span> {{ family }}</p>
+        <p><span>Propriétaires</span> {{ owners }}</p>
+      } @else if (page === 'community') {
+        <h5 class="title">{{ name }}</h5>
+        <p><span>Famille</span> {{ family }}</p>
+        <p><span>Propriétaires</span> {{ owners }}</p>
+      }
+    </div>
+    <div class="comments-and-likes">
+      <p><span>Commentaires </span> {{ comments }}</p>
+      <p><span>Likes </span> {{ likes }}</p>
+    </div>
+  </div>
+</div>
