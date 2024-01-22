@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -12,5 +12,12 @@ import { RouterLink } from '@angular/router';
 export class AuthenticationComponent implements OnInit {
   @Input() page!: 'subscription' | 'connexion';
 
-  ngOnInit(): void {}
+  route = inject(ActivatedRoute);
+  message!: string;
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.message = params['message'];
+    });
+  }
 }
