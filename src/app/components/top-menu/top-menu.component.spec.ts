@@ -2,13 +2,10 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 import { TopMenuComponent } from './top-menu.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { NgZone } from '@angular/core';
 
 describe('TopMenu Component', () => {
   let topMenuComponent: TopMenuComponent;
   let fixture: ComponentFixture<TopMenuComponent>;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
