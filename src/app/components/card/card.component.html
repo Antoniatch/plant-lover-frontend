@@ -11,12 +11,15 @@
         <p><span>Propriétaires</span> {{ owners }}</p>
       } @else if (page === 'community') {
         <h5 class="title">{{ name }}</h5>
-        <p><span>Famille</span> {{ family }}</p>
-        <p><span>Propriétaires</span> {{ owners }}</p>
+        <p>{{ numberOfPlants }} plantes</p>
       }
     </div>
     <div class="comments-and-likes">
-      <p><span>Commentaires </span> {{ comments }}</p>
+      @if (page === 'community') {
+        <p><span>Publications </span> {{ numberOfPublications }}</p>
+      } @else {
+        <p><span>Commentaires </span> {{ comments }}</p>
+      }
       <p><span>Likes </span> {{ likes }}</p>
     </div>
   </div>

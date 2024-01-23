@@ -1,5 +1,6 @@
 @use 'colors'
 @use 'fonts'
+@use 'layouts'
 
 @mixin page-container ($width,$minHeight, $direction)
     margin: auto
@@ -43,3 +44,11 @@
     top: 50%
     transform: translate(-50%, -50%)
     z-index: -100
+
+@mixin grid-page ($minColumn: layouts.$cardWidth, $gap: 70px 20px)
+    width: layouts.$contentWidth
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax($minColumn, 1fr))
+    justify-items: center
+    align-items: center
+    gap: $gap
