@@ -1,5 +1,7 @@
 import { Category, Environment, Exposure, Substrate } from './enums';
 
+// HERO
+
 export interface IBullet {
   id: number;
   text: string;
@@ -11,6 +13,8 @@ export interface IHeroContent {
   subtitle?: string;
   bullets?: IBullet[];
 }
+
+// LOGIN
 
 export interface ILoginOutput {
   accessToken: string;
@@ -31,6 +35,18 @@ export interface ISubscriptionOutput {
 export interface ILoginMessage {
   type: 'success' | 'error';
   message: string;
+}
+
+// MODEL
+
+export interface IUser {
+  id: string;
+  email: string;
+  name: string;
+  birthday: Date;
+  image?: string;
+  numberOfPlants?: number;
+  numberOfLikes?: number;
 }
 
 export interface IMix {
@@ -60,6 +76,27 @@ export interface IComment {
   plantId?: string;
 }
 
+// export interface IShortUser {
+//   id: string
+//   name: string
+// }
+
+// export interface IShortUserPlant {
+//   id: string
+//   name: string
+// }
+
+export interface IHelpCenterObservation {
+  id: string;
+  // user: IShortUser
+  // userPlant: IShortUserPlant
+  date: Date;
+  description: string;
+  image?: string;
+  // numberOfComments: number
+  // numberOfLikes: number
+}
+
 export interface IObservation {
   id: string;
   userId: string;
@@ -67,10 +104,10 @@ export interface IObservation {
   date: Date;
   description: string;
   image?: string;
-  helpCenter: boolean;
-  public: boolean;
   comments?: IComment[];
   likes?: ILike[];
+  helpCenter?: boolean;
+  public?: boolean;
 }
 
 export interface ISize {

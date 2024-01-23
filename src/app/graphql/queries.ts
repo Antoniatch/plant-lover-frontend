@@ -21,3 +21,25 @@ export const GET_ALL_PLANTS = gql`
     }
   }
 `;
+
+export const GET_ALL_USERS = gql`
+  query GetAllUsers {
+    getAllUsers {
+      id
+      email
+      name
+      birthday
+    }
+  }
+`;
+
+export const GET_ALL_HELP_CENTER_OBSERVATIONS = gql`
+  query GetAllHelpCenterObservations {
+    getAllHelpCenterObservations {
+      id
+      image
+      description
+      date
+    }
+  }
+`;

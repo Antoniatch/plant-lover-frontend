@@ -1,1 +1,8 @@
-<div class="help">Help center</div>
+<section class="help">
+  @for (helpCenterObservation of helpCenterObservations; track helpCenterObservation.id) {
+    <app-card />
+
+  } @empty {
+    Coucou
+  }
+</section>
