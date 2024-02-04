@@ -1,8 +1,9 @@
-name: staging-workflow
+name: ci-cd-workflow
 
 on:
   pull_request:
     branches:
+    - staging
     - main
   workflow_dispatch:
 
@@ -28,13 +29,13 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install dependencies
-        run: npm i
+        run: npm ci
       - name: Run tests
         run: npm run test
   push-to-dockerhub:
     name: push to dockerhub
     needs: front-tests
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -50,4 +51,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/beleaf:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/beleaf_staging:latest
