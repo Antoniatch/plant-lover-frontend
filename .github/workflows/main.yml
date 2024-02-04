@@ -71,4 +71,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/beleaf_prod:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/beleaf_front_prod:latest
