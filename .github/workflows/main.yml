@@ -32,6 +32,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
+      - name: Print github ref
+        run: echo "Coucou ${{github.ref}}"
   dockerhub-staging:
     name: push staging to dockerhub
     needs: front-tests
