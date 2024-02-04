@@ -35,7 +35,7 @@ jobs:
   dockerhub-staging:
     name: push staging to dockerhub
     needs: front-tests
-    if: github.ref == 'refs/heads/staging'
+    if:  ${{ github.ref == 'refs/heads/staging' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -55,7 +55,7 @@ jobs:
   dockerhub-prod:
     name: push prod to dockerhub
     needs: front-tests
-    if: github.ref == 'refs/heads/main'
+    if:  ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
