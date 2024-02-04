@@ -35,6 +35,7 @@ jobs:
   dockerhub-staging:
     name: push staging to dockerhub
     needs: front-tests
+    if: ${{ github.ref == 'refs/heads/staging' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -50,11 +51,11 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/beleaf_staging:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/beleaf_front_staging:latest
   dockerhub-prod:
     name: push prod to dockerhub
     needs: front-tests
-    if:  ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
