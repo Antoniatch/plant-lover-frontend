@@ -33,7 +33,11 @@ jobs:
       - name: Run tests
         run: npm run test
       - name: Print github ref
-        run: echo "Coucou ${{github.ref}}"
+        run: echo "Ref ${{github.ref}}"
+      - name: Print github base ref
+        run: echo "Baseref ${{github.base_ref}}"
+      - name: Print github head ref
+        run: echo "Headref ${{github.head_ref}}"
   dockerhub-staging:
     name: push staging to dockerhub
     needs: front-tests
