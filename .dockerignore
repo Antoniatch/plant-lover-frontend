@@ -1,1 +1,11 @@
 node_modules
+data
+.github
+.vscode
+.editorconfig
+.eslint.json
+.prettierignore
+.prettierrc.json
+jest.config.ts
+setup-jest.ts
+tsconfig.spec.json
