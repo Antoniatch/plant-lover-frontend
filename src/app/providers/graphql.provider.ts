@@ -6,8 +6,9 @@ import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/c
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.dev';
 
-const uri = 'http://localhost:4000';
+const uri = environment.api_url;
 
 export function apolloOptionsFactory(): ApolloClientOptions<any> {
   const document = inject(DOCUMENT);

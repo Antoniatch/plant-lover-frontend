@@ -29,7 +29,6 @@ services:
     image: beleaf-back
     ports:
       - 4000:4000
-    # ATTENTION Adapter le script prod dans package.json du back !
     command: npm run prod
     env_file:
       - ../back/.env
@@ -47,4 +46,4 @@ services:
       - 4200:4200
     volumes:
       - ./src:/app/src
-    command: npm start
+    command: npm run build
