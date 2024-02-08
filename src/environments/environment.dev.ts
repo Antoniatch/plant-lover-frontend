@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  api_url: 'http://localhost:4000',
+  api_url: process.env['API_URL'] || 'http://localhost:4000',
   name: 'development',
 };
