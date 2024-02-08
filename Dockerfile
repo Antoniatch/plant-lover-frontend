@@ -5,7 +5,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
-COPY .angular .angular
 COPY src src
 COPY angular.json angular.json
 COPY server.ts server.ts
