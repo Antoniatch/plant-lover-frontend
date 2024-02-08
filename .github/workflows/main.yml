@@ -56,7 +56,7 @@ jobs:
   dockerhub-prod:
     name: push prod to dockerhub
     needs: front-tests
-    if: ${{ github.base_ref == 'prod' }}
+    if: ${{ github.base_ref == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
