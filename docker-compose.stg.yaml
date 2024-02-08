@@ -1,9 +1,9 @@
-name: beleaf_prod
+name: beleaf_stg
 version: '3.8'
 
 services:
   postgres-db:
-    container_name: postgres-db_prod
+    container_name: postgres-db_stg
     image: postgres
     restart: always
     environment:
@@ -21,12 +21,12 @@ services:
       start_period: 30s
 
   beleaf-back:
-    container_name: beleaf-back_prod
+    container_name: beleaf-back_stg
     depends_on:
       "postgres-db":
         condition: service_healthy
     build: ../back/
-    image: beleaf-back_prod
+    image: beleaf-back_stg
     ports:
       - 4000:4000
     command: npm run prod
@@ -54,12 +54,12 @@ services:
       start_period: 20s
 
   beleaf-front:
-    container_name: beleaf-front_prod
+    container_name: beleaf-front_stg
     depends_on:
       "beleaf-back":
         condition: service_healthy
     build: .
-    image: beleaf-front_prod
+    image: beleaf-front_stg
     ports:
       - 4200:4200
     environment:
