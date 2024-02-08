@@ -64,6 +64,6 @@ services:
       - 4200:4200
     environment:
       - API_URL=http://beleaf-back:4000
-    command: npm run watch
+    command: npm run build
     volumes:
       - ./src:/app/src
