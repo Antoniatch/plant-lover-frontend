@@ -47,7 +47,7 @@ export function apolloOptionsFactory(): ApolloClientOptions<any> {
     }
 
     if (networkError) {
-      console.log(networkError);
+      console.log('[Network error]', networkError);
       router.navigate(['/error', { message: networkError.message }]);
     }
   });
