@@ -61,5 +61,5 @@ services:
     environment:
       - API_URL=http://beleaf-back:4000
     volumes:
-      - ./www:/app/dist/front
+      - /var/www:/app/dist/front
     command: npm run build
