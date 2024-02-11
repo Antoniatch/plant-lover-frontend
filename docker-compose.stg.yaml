@@ -25,10 +25,15 @@ services:
     depends_on:
       "postgres-db":
         condition: service_healthy
-    image: antoniatchakounte/beleaf_back_staging
+    build: ../back
+    image: beleaf_back_staging
     ports:
-      - 4000:4000
+      - 4001:4001
     command: npm run prod
+    environment:
+      - HOST=localhost
+      - PORT=4001
+      - ORIGIN=http://localhost:4201
     env_file:
       - ../back/.env
     healthcheck:
@@ -41,7 +46,7 @@ services:
           '--header',
           "'content-type: application/json'",
           '--url',
-          'http://localhost:4000/',
+          'http://localhost:4001/',
           '--data',
           '{"query":"query { __typename }"}',
         ]
@@ -55,11 +60,12 @@ services:
     depends_on:
       "beleaf-back":
         condition: service_healthy
-    image: antoniatchakounte/beleaf_front_staging
+    build: .
+    image: beleaf_front_staging
     ports:
-      - 4200:4200
+      - 4201:4200
     environment:
-      - API_URL=http://beleaf-back:4000
+      - API_URL=http://beleaf-back:4001
     volumes:
-      - /var/www:/app/dist/front
+      - /var/www_stg:/app/dist/front
     command: npm run build
