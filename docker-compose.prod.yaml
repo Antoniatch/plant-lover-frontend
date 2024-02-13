@@ -25,15 +25,12 @@ services:
     depends_on:
       "postgres-db":
         condition: service_healthy
-    build: ../back/
-    image: beleaf-back_prod
+    image: antoniatchakounte/beleaf_back_prod
     ports:
       - 4000:4000
     command: npm run prod
     env_file:
       - ../back/.env
-    volumes:
-      - ../back/src:/app/src
     healthcheck:
       test:
         [
@@ -58,12 +55,9 @@ services:
     depends_on:
       "beleaf-back":
         condition: service_healthy
-    build: .
-    image: beleaf-front_prod
+    image: antoniatchakounte/beleaf_front_prod
     ports:
       - 4200:4200
     environment:
       - API_URL=http://beleaf-back:4000
     command: npm run build
-    volumes:
-      - ./src:/app/src
