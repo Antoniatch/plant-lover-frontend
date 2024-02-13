@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
+    "build-staging": "ng build --configuration staging",
     "watch": "ng build --watch --configuration development",
     "docker-dev-up": "docker compose -f docker-compose.dev.yaml up --build",
     "docker-dev-down": "docker compose docker-compose.dev.yaml down",
