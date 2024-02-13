@@ -9,26 +9,26 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   // Inputs communs
-  @Input() page: 'plants' | 'community' | null = null;
+  @Input() page!: 'plants' | 'community';
 
   @Input() id: string = '';
   @Input() name: string = '';
-  @Input() image: string = '';
-  @Input() likes: number | null = 345;
+  @Input() image: string = '../../../assets/Beleaf - Dessin.png';
+  @Input() likes: number | 'NR' = 'NR';
 
   // Inputs des plantes et observations
-  @Input() comments: number | null = 56;
+  @Input() comments: number | 'NR' = 'NR';
 
   // Inputs des plantes
-  @Input() family: string = 'Ficus';
-  @Input() owners: number | null = 125;
+  @Input() family: string = 'NR';
+  @Input() owners: number | 'NR' = 'NR';
 
   // Inputs des utilisateurs
-  @Input() numberOfPlants: number | null = 4;
-  @Input() numberOfPublications: number | null = 18;
+  @Input() numberOfPlants: number | 'NR' = 'NR';
+  @Input() numberOfPublications: number | 'NR' = 'NR';
 
   ngOnInit(): void {
-    if (this.image === 'none' || !this.image) {
+    if (this.image === 'none') {
       this.image = '../../../assets/Beleaf - Dessin.png';
     }
   }

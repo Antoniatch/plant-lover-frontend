@@ -7,8 +7,8 @@
     <div class="info">
       @if (page === 'plants') {
         <h5 class="title">{{ name }}</h5>
-        <p><span>Famille</span> {{ family }}</p>
-        <p><span>Propriétaires</span> {{ owners }}</p>
+        <p><span data-testid="card-family-span">Famille</span> {{ family }}</p>
+        <p><span data-testid="card-owners-span">Propriétaires</span> {{ owners }}</p>
       } @else if (page === 'community') {
         <h5 class="title">{{ name }}</h5>
         <p>{{ numberOfPlants }} plantes</p>
@@ -16,11 +16,13 @@
     </div>
     <div class="comments-and-likes">
       @if (page === 'community') {
-        <p><span>Publications </span> {{ numberOfPublications }}</p>
+        <p>
+          <span data-testid="card-publications-span">Publications </span> {{ numberOfPublications }}
+        </p>
       } @else {
-        <p><span>Commentaires </span> {{ comments }}</p>
+        <p><span data-testid="card-comments-span">Commentaires </span> {{ comments }}</p>
       }
-      <p><span>Likes </span> {{ likes }}</p>
+      <p><span data-testid="card-likes-span">Likes </span> {{ likes }}</p>
     </div>
   </div>
 </div>
