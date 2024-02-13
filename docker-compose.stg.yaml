@@ -65,4 +65,4 @@ services:
       - API_URL=http://beleaf-back:4001
     volumes:
       - /var/www_stg:/app/dist/front
-    command: npm run start-prod
+    command: npm run build-staging
