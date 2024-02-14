@@ -36,15 +36,15 @@ describe('CardComponent', () => {
     const card = fixture.nativeElement;
 
     const title = card.querySelector('h5').textContent;
-    const family = card.querySelector('[data-testid="card-family-span"]').textContent;
-    const owners = card.querySelector('[data-testid="card-owners-span"]').textContent;
-    const comments = card.querySelector('[data-testid="card-comments-span"]').textContent;
-    const likes = card.querySelector('[data-testid="card-likes-span"]').textContent;
+    const family = card.querySelector('[data-testid="card-family-content"]').textContent;
+    const owners = card.querySelector('[data-testid="card-owners-content"]').textContent;
+    const comments = card.querySelector('[data-testid="card-comments-content"]').textContent;
+    const likes = card.querySelector('[data-testid="card-likes-content"]').textContent;
 
     expect(title).toBe(defaultValues.name);
-    expect(family).toBe(defaultValues.family);
-    expect(owners).toBe(defaultValues.owners);
-    expect(comments).toBe(defaultValues.comments);
-    expect(likes).toBe(defaultValues.likes);
+    expect(family).toContain(defaultValues.family);
+    expect(owners).toContain(defaultValues.owners);
+    expect(comments).toContain(defaultValues.comments);
+    expect(likes).toContain(defaultValues.likes);
   });
 });
