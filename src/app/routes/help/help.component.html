@@ -1,7 +1,6 @@
 <section class="help">
   @for (helpCenterObservation of helpCenterObservations; track helpCenterObservation.id) {
-    <app-card />
-
+    <app-card format="observation" />
   } @empty {
     Coucou
   }
