@@ -1,6 +1,6 @@
 <div class="plants">
   @for (plant of plants; track plant.id) {
-    <app-card page="plants" [id]="plant.id" [name]="plant.name" [image]="plant.image" />
+    <app-card format="plant" [name]="plant.name" [image]="plant.image" />
   }
 </div>
 

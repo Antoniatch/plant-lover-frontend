@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,11 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrl: './card.component.sass',
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   // Inputs communs
-  @Input() page!: 'plants' | 'community';
+  @Input({ required: true }) format!: 'plant' | 'user' | 'observation';
 
-  @Input() id: string = '';
   @Input() name: string = '';
   @Input() image: string = '../../../assets/Beleaf - Dessin.png';
   @Input() likes: number | 'NR' = 'NR';
@@ -26,10 +25,4 @@ export class CardComponent implements OnInit {
   // Inputs des utilisateurs
   @Input() numberOfPlants: number | 'NR' = 'NR';
   @Input() numberOfPublications: number | 'NR' = 'NR';
-
-  ngOnInit(): void {
-    if (this.image === 'none') {
-      this.image = '../../../assets/Beleaf - Dessin.png';
-    }
-  }
 }

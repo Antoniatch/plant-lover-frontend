@@ -21,7 +21,7 @@ describe('CardComponent', () => {
   });
 
   it('should render default values when no input is passed', () => {
-    component.page = 'plants';
+    component.format = 'plant';
 
     const defaultValues = {
       name: '',
