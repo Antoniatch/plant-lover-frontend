@@ -1,6 +1,6 @@
 <section class="community">
   @for (user of users; track user.id) {
-    <app-card page="community" [name]="user.name" />
+    <app-card format="user" [name]="user.name" />
   }
 </section>
 
