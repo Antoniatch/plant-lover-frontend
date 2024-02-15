@@ -25,13 +25,12 @@ export class FormService {
   error = null;
 
   submitSubscription(email: string, name: string, password: string) {
-    console.log(email, name, password);
-
     this.apollo
       .mutate({
         mutation: CREATE_NEW_USER,
         variables: {
           data: {
+            email,
             name,
             password,
           },
