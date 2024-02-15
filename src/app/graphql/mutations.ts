@@ -1,7 +1,7 @@
 import { gql } from 'apollo-angular';
 
 export const CREATE_NEW_USER = gql`
-  mutation CreateOneUser($data: LoginInput!) {
+  mutation CreateOneUser($data: CreateUserInput!) {
     createOneUser(data: $data) {
       id
       name
