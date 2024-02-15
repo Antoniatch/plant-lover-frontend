@@ -1,7 +1,5 @@
-import * as process from 'process';
-
 export const environment = {
   production: true,
-  api_url: process.env['API_URL'] || 'http://localhost:4001',
+  api_url: 'https://staging-api.disbeleaf.fr',
   name: 'staging',
 };
