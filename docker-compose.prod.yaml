@@ -58,6 +58,4 @@ services:
     image: antoniatchakounte/beleaf_front_prod
     ports:
       - 4200:4200
-    environment:
-      - API_URL=http://beleaf-back:4000
     command: npm run build
