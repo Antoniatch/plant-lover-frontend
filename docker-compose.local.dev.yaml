@@ -62,8 +62,6 @@ services:
     image: local/beleaf_front_staging
     ports:
       - 4200:4200
-    environment:
-      - API_URL=http://beleaf-back:4000
     volumes:
       - ./src:/app/src
     command: npm start

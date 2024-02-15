@@ -1,7 +1,5 @@
-import * as process from 'process';
-
 export const environment = {
   production: false,
-  api_url: process.env['API_URL'] || 'http://localhost:4000',
+  api_url: 'http://localhost:4000',
   name: 'development',
 };
