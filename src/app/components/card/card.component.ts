@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,29 +7,22 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrl: './card.component.sass',
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   // Inputs communs
-  @Input() page: 'plants' | 'community' | null = null;
+  @Input({ required: true }) format!: 'plant' | 'user' | 'observation';
 
-  @Input() id: string = '';
   @Input() name: string = '';
-  @Input() image: string = '';
-  @Input() likes: number | null = 345;
+  @Input() image: string = '../../../assets/Beleaf - Dessin.png';
+  @Input() likes: number | 'NR' = 'NR';
 
   // Inputs des plantes et observations
-  @Input() comments: number | null = 56;
+  @Input() comments: number | 'NR' = 'NR';
 
   // Inputs des plantes
-  @Input() family: string = 'Ficus';
-  @Input() owners: number | null = 125;
+  @Input() family: string = 'NR';
+  @Input() owners: number | 'NR' = 'NR';
 
   // Inputs des utilisateurs
-  @Input() numberOfPlants: number | null = 4;
-  @Input() numberOfPublications: number | null = 18;
-
-  ngOnInit(): void {
-    if (this.image === 'none' || !this.image) {
-      this.image = '../../../assets/Beleaf - Dessin.png';
-    }
-  }
+  @Input() numberOfPlants: number | 'NR' = 'NR';
+  @Input() numberOfPublications: number | 'NR' = 'NR';
 }

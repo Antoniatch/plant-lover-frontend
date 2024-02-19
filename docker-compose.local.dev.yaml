@@ -1,0 +1,67 @@
+name: beleaf_dev
+version: '3.8'
+
+services:
+  postgres-db:
+    container_name: postgres-db
+    image: postgres
+    restart: always
+    environment:
+      PGUSER: my-user
+      POSTGRES_USER: my-user
+      POSTGRES_PASSWORD: my-pwd
+      POSTGRES_DB: my-db
+    volumes:
+      - ../back/data_stg:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -h postgres-db']
+      interval: 5s
+      timeout: 10s
+      retries: 15
+      start_period: 30s
+
+  beleaf-back:
+    container_name: beleaf-back_dev
+    depends_on:
+      "postgres-db":
+        condition: service_healthy
+    build: ../back
+    image: local/beleaf_back_staging
+    ports:
+      - 4000:4000
+    command: npm run server
+    env_file:
+      - ../back/.env
+    volumes:
+      - ../back/src:/app/src
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'curl',
+          '--request',
+          'POST',
+          '--header',
+          "'content-type: application/json'",
+          '--url',
+          'http://localhost:4000/',
+          '--data',
+          '{"query":"query { __typename }"}',
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  beleaf-front:
+    container_name: beleaf-front_dev
+    depends_on:
+      "beleaf-back":
+        condition: service_healthy
+    build: .
+    image: local/beleaf_front_staging
+    ports:
+      - 4200:4200
+    volumes:
+      - ./src:/app/src
+    command: npm start

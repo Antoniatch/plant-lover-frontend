@@ -1,0 +1,68 @@
+name: beleaf_stg
+version: '3.8'
+
+services:
+  postgres-db:
+    container_name: postgres-db_stg
+    image: postgres
+    restart: always
+    environment:
+      PGUSER: my-user
+      POSTGRES_USER: my-user
+      POSTGRES_PASSWORD: my-pwd
+      POSTGRES_DB: my-db
+    volumes:
+      - ../back/data_stg:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -h postgres-db']
+      interval: 5s
+      timeout: 10s
+      retries: 15
+      start_period: 30s
+
+  beleaf-back:
+    container_name: beleaf-back_stg
+    depends_on:
+      "postgres-db":
+        condition: service_healthy
+    image: antoniatchakounte/beleaf_back_staging
+    ports:
+      - 4001:4001
+    command: npm run prod
+    environment:
+      - HOST=localhost
+      - PORT=4001
+    env_file:
+      - ../back/.env
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'curl',
+          '--request',
+          'POST',
+          '--header',
+          "'content-type: application/json'",
+          '--url',
+          'http://localhost:4001/',
+          '--data',
+          '{"query":"query { __typename }"}',
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  beleaf-front:
+    container_name: beleaf-front_stg
+    depends_on:
+      "beleaf-back":
+        condition: service_healthy
+    image: antoniatchakounte/beleaf_front_staging
+    ports:
+      - 4201:4200
+    environment:
+      - API_URL=http://beleaf-back:4001
+    volumes:
+      - /var/www_stg:/app/dist/front
+    command: npm run build-staging
